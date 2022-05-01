@@ -14,6 +14,11 @@ config/name="godownloader"
 run/main_scene="res://scenes/main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://autoload/globals.gd"
+FileManager="*res://autoload/file_manager.gd"
+
 [display]
 
 window/size/width=1280
