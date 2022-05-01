@@ -1,0 +1,353 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://scenes/buton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://visuals/fonts/Poppins-Medium.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://visuals/Poppins-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/visuals/app_theme.tres" type="Theme" id=4]
+[ext_resource path="res://scripts/setup.gd" type="Script" id=5]
+
+[sub_resource type="Shader" id=18]
+code = "shader_type canvas_item;
+
+uniform float blur_amount : hint_range(-2.0, 10.0);
+uniform float mix_amount : hint_range(0.0, 1.0);
+uniform vec4 color_over : hint_color;
+
+void fragment() {
+	vec4 blurred = textureLod(SCREEN_TEXTURE, SCREEN_UV, blur_amount);
+	vec4 fin = mix(blurred, color_over, mix_amount);
+	COLOR = fin;
+}"
+
+[sub_resource type="ShaderMaterial" id=19]
+shader = SubResource( 18 )
+shader_param/blur_amount = 1.343
+shader_param/mix_amount = 0.471
+shader_param/color_over = Color( 0.113725, 0.105882, 0.133333, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.203922, 0.203922, 0.231373, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.14902, 0.14902, 0.180392, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="DynamicFont" id=8]
+size = 34
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 28
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 28
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.14902, 0.14902, 0.180392, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.0862745, 0.0862745, 0.105882, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0.427451, 0.427451, 0.447059, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.14902, 0.14902, 0.180392, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=14]
+size = 23
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0.345098, 0.839216, 0.74902, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=16]
+bg_color = Color( 0.235294, 0.564706, 0.505882, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.345098, 0.839216, 0.74902, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Setup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 5 )
+
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource( 19 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -568.0
+margin_top = -281.0
+margin_right = 568.0
+margin_bottom = 281.0
+
+[node name="Background" type="Panel" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+margin_right = 1136.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 0, 65 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 5 )
+text = "Setup"
+align = 1
+valign = 1
+
+[node name="Panel2" type="Panel" parent="Control/VBoxContainer/Label"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 4 )
+
+[node name="ContentMargin" type="MarginContainer" parent="Control/VBoxContainer"]
+margin_top = 69.0
+margin_right = 1136.0
+margin_bottom = 509.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 10
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/ContentMargin"]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 1116.0
+margin_bottom = 420.0
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+margin_right = 1096.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "Choose Godot installation folder"
+valign = 1
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+margin_top = 63.0
+margin_right = 1096.0
+margin_bottom = 103.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.8, 0.8, 0.807843, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "The folder will be scanned to find already installed Godot executables"
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+margin_top = 118.0
+margin_right = 1096.0
+margin_bottom = 183.0
+custom_constants/separation = 30
+
+[node name="LineEdit" type="LineEdit" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer"]
+margin_right = 866.0
+margin_bottom = 65.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+
+[node name="BrowseBtn" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer" instance=ExtResource( 1 )]
+margin_left = 896.0
+margin_right = 1096.0
+custom_colors/font_color_disabled = Color( 0.427451, 0.427451, 0.447059, 1 )
+custom_colors/font_color_focus = Color( 0.8, 0.8, 0.807843, 1 )
+custom_colors/font_color = Color( 0.8, 0.8, 0.807843, 1 )
+custom_colors/font_color_hover = Color( 0.8, 0.8, 0.807843, 1 )
+custom_colors/font_color_pressed = Color( 0.8, 0.8, 0.807843, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 12 )
+text = "Browse"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+margin_top = 198.0
+margin_right = 1096.0
+margin_bottom = 232.0
+custom_constants/separation = 30
+
+[node name="CheckBox" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer2"]
+margin_right = 24.0
+margin_bottom = 34.0
+theme = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer2"]
+margin_left = 54.0
+margin_right = 1096.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "Launch at startup"
+valign = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+margin_top = 247.0
+margin_right = 1096.0
+margin_bottom = 281.0
+custom_constants/separation = 30
+
+[node name="CheckBox" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer3"]
+margin_right = 24.0
+margin_bottom = 34.0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer3"]
+margin_left = 54.0
+margin_right = 1096.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "Automatically check for updates"
+valign = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+margin_top = 296.0
+margin_right = 1096.0
+margin_bottom = 330.0
+custom_constants/separation = 30
+
+[node name="CheckBox" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer4"]
+margin_right = 24.0
+margin_bottom = 34.0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer4"]
+margin_left = 54.0
+margin_right = 1096.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "Add shortcut to desktop"
+valign = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+margin_top = 345.0
+margin_right = 1096.0
+margin_bottom = 410.0
+custom_constants/separation = 30
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer5"]
+margin_top = 12.0
+margin_right = 866.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.8, 0.8, 0.807843, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "You can change these settings later in the settings page"
+valign = 1
+autowrap = true
+
+[node name="FinishBtn" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer5" instance=ExtResource( 1 )]
+margin_left = 896.0
+margin_right = 1096.0
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 17 )
+text = "FINISH"
+
+[node name="FileDialog" type="FileDialog" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 210, 73.5 )
+theme = ExtResource( 4 )
+window_title = "Open a Directory"
+mode = 2
+access = 2
+current_dir = "/Users/Victor/Documents/dev/GAMEDEV/godownloader"
+current_path = "/Users/Victor/Documents/dev/GAMEDEV/godownloader/"
+
+[connection signal="pressed" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer/BrowseBtn" to="." method="_on_BrowseBtn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer5/FinishBtn" to="." method="_on_FinishBtn_pressed"]

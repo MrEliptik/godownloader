@@ -1,0 +1,116 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://visuals/Poppins-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/buton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/card.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.14902, 0.14902, 0.180392, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.839216, 0.34902, 0.345098, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.839216, 0.34902, 0.345098, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Card" type="Control"]
+margin_right = 648.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 0, 120 )
+size_flags_horizontal = 3
+script = ExtResource( 3 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 8 )
+
+[node name="ContentMargin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentMargin"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 638.0
+margin_bottom = 115.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMargin/HBoxContainer"]
+margin_top = 12.0
+margin_right = 232.0
+margin_bottom = 92.0
+size_flags_vertical = 4
+custom_constants/separation = 5
+
+[node name="Label" type="Label" parent="ContentMargin/HBoxContainer/VBoxContainer"]
+margin_right = 232.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.8, 0.8, 0.807843, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Godot version"
+valign = 1
+
+[node name="Label2" type="Label" parent="ContentMargin/HBoxContainer/VBoxContainer"]
+margin_top = 45.0
+margin_right = 232.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 0.427451, 0.427451, 0.447059, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Path/to/installation"
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="ContentMargin/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 236.0
+margin_right = 424.0
+margin_bottom = 105.0
+size_flags_horizontal = 3
+
+[node name="DownloadBtn" parent="ContentMargin/HBoxContainer" instance=ExtResource( 2 )]
+
+[node name="EraseBtn" parent="ContentMargin/HBoxContainer" instance=ExtResource( 2 )]
+visible = false
+margin_left = 563.0
+rect_min_size = Vector2( 65, 65 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/normal = SubResource( 9 )
+text = ""
