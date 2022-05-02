@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/top_bar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/visuals/app_theme.tres" type="Theme" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/setup.tscn" type="PackedScene" id=4]
 [ext_resource path="res://visuals/Poppins-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://scenes/main.gd" type="Script" id=6]
+[ext_resource path="res://scripts/cards_view.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 34
@@ -42,17 +43,18 @@ margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/View"]
+[node name="CardView" type="ScrollContainer" parent="VBoxContainer/View"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -6.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource( 2 )
+script = ExtResource( 7 )
 
-[node name="ContentMargin" type="MarginContainer" parent="VBoxContainer/View/ScrollContainer"]
-margin_right = 1262.0
-margin_bottom = 1090.0
+[node name="ContentMargin" type="MarginContainer" parent="VBoxContainer/View/CardView"]
+margin_right = 1274.0
+margin_bottom = 656.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/margin_right = 20
@@ -60,22 +62,22 @@ custom_constants/margin_top = 30
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/View/ScrollContainer/ContentMargin"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/View/CardView/ContentMargin"]
 margin_left = 20.0
 margin_top = 30.0
-margin_right = 1242.0
-margin_bottom = 1075.0
+margin_right = 1254.0
+margin_bottom = 641.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 15
 
-[node name="LatestVersion" type="VBoxContainer" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer"]
-margin_right = 1222.0
+[node name="LatestVersion" type="VBoxContainer" parent="VBoxContainer/View/CardView/ContentMargin/VBoxContainer"]
+margin_right = 1234.0
 margin_bottom = 190.0
 custom_constants/separation = 10
 
-[node name="Label" type="Label" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer/LatestVersion"]
-margin_right = 1222.0
+[node name="Label" type="Label" parent="VBoxContainer/View/CardView/ContentMargin/VBoxContainer/LatestVersion"]
+margin_right = 1234.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 size_flags_horizontal = 3
@@ -83,25 +85,25 @@ custom_colors/font_color = Color( 0.345098, 0.839216, 0.74902, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "New version available!"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer/LatestVersion/Label"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/View/CardView/ContentMargin/VBoxContainer/LatestVersion/Label"]
 margin_top = 41.0
 margin_right = 1228.0
 margin_bottom = 67.0
 size_flags_horizontal = 3
 
-[node name="Card" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer/LatestVersion" instance=ExtResource( 3 )]
+[node name="Card" parent="VBoxContainer/View/CardView/ContentMargin/VBoxContainer/LatestVersion" instance=ExtResource( 3 )]
 margin_top = 70.0
-margin_right = 1222.0
+margin_right = 1234.0
 margin_bottom = 190.0
 
-[node name="Installed" type="VBoxContainer" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer"]
+[node name="Installed" type="VBoxContainer" parent="VBoxContainer/View/CardView/ContentMargin/VBoxContainer"]
 margin_top = 205.0
-margin_right = 1222.0
-margin_bottom = 1045.0
+margin_right = 1234.0
+margin_bottom = 265.0
 custom_constants/separation = 10
 
-[node name="Label" type="Label" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer/Installed"]
-margin_right = 1222.0
+[node name="Label" type="Label" parent="VBoxContainer/View/CardView/ContentMargin/VBoxContainer/Installed"]
+margin_right = 1234.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 size_flags_horizontal = 3
@@ -109,46 +111,12 @@ custom_colors/font_color = Color( 0.8, 0.8, 0.807843, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Installed"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer/Installed/Label"]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/View/CardView/ContentMargin/VBoxContainer/Installed/Label"]
 margin_top = 38.0
 margin_right = 1228.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 
-[node name="Card2" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer/Installed" instance=ExtResource( 3 )]
-margin_top = 70.0
-margin_right = 1222.0
-margin_bottom = 190.0
-installed = true
-
-[node name="Card3" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer/Installed" instance=ExtResource( 3 )]
-margin_top = 200.0
-margin_right = 1222.0
-margin_bottom = 320.0
-installed = true
-
-[node name="Card4" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer/Installed" instance=ExtResource( 3 )]
-margin_top = 330.0
-margin_right = 1222.0
-margin_bottom = 450.0
-installed = true
-
-[node name="Card5" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer/Installed" instance=ExtResource( 3 )]
-margin_top = 460.0
-margin_right = 1222.0
-margin_bottom = 580.0
-installed = true
-
-[node name="Card6" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer/Installed" instance=ExtResource( 3 )]
-margin_top = 590.0
-margin_right = 1222.0
-margin_bottom = 710.0
-installed = true
-
-[node name="Card7" parent="VBoxContainer/View/ScrollContainer/ContentMargin/VBoxContainer/Installed" instance=ExtResource( 3 )]
-margin_top = 720.0
-margin_right = 1222.0
-margin_bottom = 840.0
-installed = true
-
 [node name="Setup" parent="." instance=ExtResource( 4 )]
+
+[connection signal="finish" from="Setup" to="VBoxContainer/View/CardView" method="_on_Setup_finish"]
