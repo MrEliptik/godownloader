@@ -31,6 +31,8 @@ func _on_FileDialog_dir_selected(dir: String) -> void:
 	executablesFound.text = "Found %s Godot executables" % res.size()
 	executablesFound.modulate.a = 1.0
 	
+	for version in res:
+		Globals.godot_versions.append(version)
 
 func _on_Startup_toggled(button_pressed):
 	Globals.launch_startup = button_pressed
