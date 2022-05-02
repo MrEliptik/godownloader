@@ -10,6 +10,8 @@ static func look_for_godot_in_dir(dir_path: String) -> Array:
 	var version_regex = RegEx.new()
 	version_regex.compile("((?:[0-9]\\.){1,2}[0-9])")
 	
+	#TODO: add regex for type (stable, alpha, etc..)
+	
 	if dir.open(dir_path) == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
