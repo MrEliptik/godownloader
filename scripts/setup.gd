@@ -24,7 +24,6 @@ func _on_Startup_pressed() -> void:
 
 func _on_FileDialog_dir_selected(dir: String) -> void:
 	dirPath.text = dir
-#	Globals.godot_dirs.append(dir)
 	finishBtn.disabled = false
 	
 	var res = FileManager.look_for_godot_in_dir(dir)
