@@ -16,6 +16,7 @@ func _ready() -> void:
 	# Set values
 	$ContentMargin/HBoxContainer/DownloadBtn.visible = !installed
 	$ContentMargin/HBoxContainer/EraseBtn.visible = installed
+	$ContentMargin/HBoxContainer/LaunchBtn.visible = installed
 
 func set_installed(val: bool) -> void:
 	installed = val
@@ -23,3 +24,14 @@ func set_installed(val: bool) -> void:
 		$ContentMargin/HBoxContainer/DownloadBtn.visible = !installed
 	if has_node("ContentMargin/HBoxContainer/EraseBtn"):
 		$ContentMargin/HBoxContainer/EraseBtn.visible = installed
+		
+func launch(path: String) -> void:
+	var output = []
+	# -p to launch project manager
+	# https://godotengine.org/qa/99353/opening-a-godot-game-from-another-wrong-project-lauches
+	var pid = OS.execute(path, ["-p"], false, output)
+	print(pid)
+	print(output)
+
+func _on_LaunchBtn_pressed() -> void:
+	launch(path)
