@@ -1,2 +1,5 @@
-# godownloader
-A Godot download manager. Easily manage, download and update your Godot installations
+<p align="center">
+  <img src="medias/header.png">
+</p>
+
+A Godot download manager: easily manage, download and update your Godot installations.
