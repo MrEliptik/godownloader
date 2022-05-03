@@ -11,3 +11,5 @@ var version = {
 var launch_startup: bool = true
 var check_update_auto: bool = true
 var godot_versions = []
+
+var available_versions = []
