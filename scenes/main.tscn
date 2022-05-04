@@ -72,6 +72,7 @@ size_flags_vertical = 3
 custom_constants/separation = 15
 
 [node name="LatestVersion" type="VBoxContainer" parent="VBoxContainer/View/CardView/ContentMargin/VBoxContainer"]
+visible = false
 margin_right = 1234.0
 margin_bottom = 190.0
 custom_constants/separation = 10
@@ -97,9 +98,8 @@ margin_right = 1234.0
 margin_bottom = 190.0
 
 [node name="Installed" type="VBoxContainer" parent="VBoxContainer/View/CardView/ContentMargin/VBoxContainer"]
-margin_top = 205.0
 margin_right = 1234.0
-margin_bottom = 265.0
+margin_bottom = 60.0
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="VBoxContainer/View/CardView/ContentMargin/VBoxContainer/Installed"]
@@ -118,7 +118,6 @@ margin_bottom = 62.0
 size_flags_horizontal = 3
 
 [node name="Setup" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [connection signal="add_version" from="VBoxContainer/TopBar" to="." method="_on_TopBar_add_version"]
 [connection signal="settings" from="VBoxContainer/TopBar" to="." method="_on_TopBar_settings"]

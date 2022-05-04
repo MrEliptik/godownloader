@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/buton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://visuals/fonts/Poppins-Medium.ttf" type="DynamicFontData" id=2]
@@ -56,6 +56,26 @@ use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=20]
+size = 25
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=21]
+bg_color = Color( 0.345098, 0.839216, 0.74902, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=22]
+bg_color = Color( 0.14902, 0.14902, 0.180392, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="DynamicFont" id=7]
 size = 28
 use_mipmaps = true
@@ -92,6 +112,32 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id=17]
 bg_color = Color( 0.345098, 0.839216, 0.74902, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=23]
+bg_color = Color( 0.839216, 0.34902, 0.345098, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=24]
+bg_color = Color( 0.662745, 0.270588, 0.266667, 1 )
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id=25]
+bg_color = Color( 0.839216, 0.34902, 0.345098, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -178,25 +224,25 @@ margin_bottom = 302.0
 size_flags_vertical = 4
 custom_constants/separation = 35
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+[node name="TypeContainer" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
 margin_right = 568.0
 margin_bottom = 34.0
 custom_constants/separation = 20
 alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer"]
 margin_left = 115.0
 margin_right = 218.0
 margin_bottom = 34.0
 custom_constants/separation = 10
 
-[node name="Alpha" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6/HBoxContainer2"]
+[node name="Alpha" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer/HBoxContainer2"]
 margin_right = 24.0
 margin_bottom = 34.0
 theme = ExtResource( 4 )
 pressed = true
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6/HBoxContainer2"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer/HBoxContainer2"]
 margin_left = 34.0
 margin_right = 103.0
 margin_bottom = 34.0
@@ -207,18 +253,18 @@ custom_fonts/font = SubResource( 14 )
 text = "Alpha"
 valign = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer"]
 margin_left = 238.0
 margin_right = 325.0
 margin_bottom = 34.0
 custom_constants/separation = 10
 
-[node name="Beta" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6/HBoxContainer3"]
+[node name="Beta" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer/HBoxContainer3"]
 margin_right = 24.0
 margin_bottom = 34.0
 pressed = true
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6/HBoxContainer3"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer/HBoxContainer3"]
 margin_left = 34.0
 margin_right = 87.0
 margin_bottom = 34.0
@@ -229,18 +275,18 @@ custom_fonts/font = SubResource( 14 )
 text = "Beta"
 valign = 1
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer"]
 margin_left = 345.0
 margin_right = 453.0
 margin_bottom = 34.0
 custom_constants/separation = 10
 
-[node name="Stable" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6/HBoxContainer4"]
+[node name="Stable" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer/HBoxContainer4"]
 margin_right = 24.0
 margin_bottom = 34.0
 pressed = true
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6/HBoxContainer4"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer/HBoxContainer4"]
 margin_left = 34.0
 margin_right = 108.0
 margin_bottom = 34.0
@@ -251,13 +297,13 @@ custom_fonts/font = SubResource( 14 )
 text = "Stable"
 valign = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+[node name="VersionContainer" type="VBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
 margin_top = 69.0
 margin_right = 568.0
 margin_bottom = 177.0
 custom_constants/separation = 10
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/VersionContainer"]
 margin_right = 568.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
@@ -268,11 +314,41 @@ text = "Choose version"
 align = 1
 valign = 1
 
-[node name="VersionBtn" type="OptionButton" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/VBoxContainer2"]
+[node name="VersionBtn" type="OptionButton" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/VersionContainer"]
 margin_top = 58.0
 margin_right = 568.0
 margin_bottom = 108.0
 rect_min_size = Vector2( 0, 50 )
+
+[node name="DownloadContainer" type="VBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+visible = false
+margin_top = 212.0
+margin_right = 568.0
+margin_bottom = 316.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="DownloadLabel" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/DownloadContainer"]
+margin_right = 568.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 8 )
+text = "Downloading Godot 3.4.3"
+align = 1
+valign = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/DownloadContainer"]
+margin_top = 68.0
+margin_right = 568.0
+margin_bottom = 104.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 20 )
+custom_styles/fg = SubResource( 21 )
+custom_styles/bg = SubResource( 22 )
+value = 50.0
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
 margin_top = 212.0
@@ -294,9 +370,26 @@ custom_styles/disabled = SubResource( 13 )
 custom_styles/normal = SubResource( 17 )
 text = "DOWNLOAD v3.4.3"
 
+[node name="CancelBtn" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer5" instance=ExtResource( 1 )]
+visible = false
+margin_left = 368.0
+margin_right = 568.0
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 23 )
+custom_styles/pressed = SubResource( 24 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 25 )
+text = "Cancel"
+
 [connection signal="pressed" from="Control/VBoxContainer/Label/CloseBtn" to="." method="_on_CloseBtn_pressed"]
-[connection signal="toggled" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6/HBoxContainer2/Alpha" to="." method="_on_Alpha_toggled"]
-[connection signal="toggled" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6/HBoxContainer3/Beta" to="." method="_on_Beta_toggled"]
-[connection signal="toggled" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6/HBoxContainer4/Stable" to="." method="_on_Stable_toggled"]
-[connection signal="item_selected" from="Control/VBoxContainer/ContentMargin/VBoxContainer/VBoxContainer2/VersionBtn" to="." method="_on_VersionBtn_item_selected"]
+[connection signal="toggled" from="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer/HBoxContainer2/Alpha" to="." method="_on_Alpha_toggled"]
+[connection signal="toggled" from="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer/HBoxContainer3/Beta" to="." method="_on_Beta_toggled"]
+[connection signal="toggled" from="Control/VBoxContainer/ContentMargin/VBoxContainer/TypeContainer/HBoxContainer4/Stable" to="." method="_on_Stable_toggled"]
+[connection signal="item_selected" from="Control/VBoxContainer/ContentMargin/VBoxContainer/VersionContainer/VersionBtn" to="." method="_on_VersionBtn_item_selected"]
 [connection signal="pressed" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer5/DownloadBtn" to="." method="_on_DownloadBtn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer5/CancelBtn" to="." method="_on_CancelBtn_pressed"]
