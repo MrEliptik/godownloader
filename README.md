@@ -4,6 +4,10 @@
 
 A Godot download manager: easily manage, download and update your Godot installations.
 
+*NOTE: This app is currently under development!*
+
+
+
 
 ## About me
 
