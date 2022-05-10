@@ -45,15 +45,38 @@ static func look_for_godot_in_dir(dir_path: String) -> Array:
 		
 	return res
 
-static func delete_file(path: String) -> void:
-	var file = File.new()
-	file.open(path, File.READ)
+static func unzip_to(path: String, to: String) -> void:
 	# Convert relative path to absolute
-	var abs_path = file.get_path_absolute()
+	var abs_path = get_abs_path(path)
 	# Convert path to "windows" path, necessary for "del"
 	abs_path = abs_path.replacen("/", "\\")
-	file.close()
+	
+	to = to.replacen("/", "\\")
+	
+	print("\"%s\""%to)
+
+	var output = []
+#	Expand-Archive -LiteralPath .\Godot_v3.4.3-stable_win64.exe.zip -DestinationPath "C:\Users\Victor\Downloads\Godot_v3.4.3" -Force
+	if OS.execute("powershell.exe", 
+		["-Command", "Expand-Archive", "-LiteralPath", abs_path, "-DestinationPath", "\'%s\'"%to, "-Force"], 
+		true, output, true) != OK:
+		print("Unzipping %s failed" % abs_path)
+		print(output)
+
+static func delete_file(path: String) -> void:
+	# Convert relative path to absolute
+	var abs_path = get_abs_path(path)
+	# Convert path to "windows" path, necessary for "del"
+	abs_path = abs_path.replacen("/", "\\")
 	var output = []
 	if OS.execute("del", [abs_path], true, output, true) != OK:
 		print("Deleting %s failed" % abs_path)
 		print(output)
+
+# Converts relative path to absolute
+static func get_abs_path(path: String) -> String:
+	var file = File.new()
+	file.open(path, File.READ)
+	var abs_path = file.get_path_absolute()
+	file.close()
+	return abs_path

@@ -1,5 +1,6 @@
 extends Control
 
+export var setup_scene = preload("res://scenes/setup.tscn")
 export var network = preload("res://autoload/network.tscn")
 export var download_popup_scene = preload("res://scenes/download_popup.tscn")
 
@@ -12,6 +13,14 @@ func _ready() -> void:
 	net_instance.get_available_versions()
 	net_instance.connect("download_progress", self, "on_download_progress")
 	net_instance.connect("download_finished", self, "on_download_finished")
+	net_instance.connect("versions_updated", $VBoxContainer/View/CardView, "on_versions_updated")
+	
+	if Globals.setup_complete:
+		pass
+	else:
+		var instance = setup_scene.instance()
+		add_child(instance)
+		instance.connect("finish", $VBoxContainer/View/CardView, "_on_Setup_finish")
 
 func _on_TopBar_add_version() -> void:
 	var instance = download_popup_scene.instance()
@@ -35,11 +44,11 @@ func on_download_progress(progress: int) -> void:
 func on_download_finished(complete: bool, path:String) -> void:
 	download_popup.queue_free()
 	if complete:
-		pass
 		# Unzip to install dir
+		FileManager.unzip_to(path, Globals.install_path)
 		
 		# Remove download
-#		FileManager.delete_file(path)
+		FileManager.delete_file(path)
 	else:
 		# Remove download
 		FileManager.delete_file(path)
