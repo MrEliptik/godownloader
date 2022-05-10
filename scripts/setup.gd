@@ -26,6 +26,7 @@ func _on_FileDialog_dir_selected(dir: String) -> void:
 	dirPath.text = dir
 	finishBtn.disabled = false
 	
+	Globals.install_path = dir
 	var res = FileManager.look_for_godot_in_dir(dir)
 	executablesFound.text = "Found %s Godot executables" % res.size()
 	executablesFound.modulate.a = 1.0
