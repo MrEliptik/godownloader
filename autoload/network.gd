@@ -1,7 +1,7 @@
 extends Node2D
 
 signal download_progress(progress)
-signal download_finished(complete)
+signal download_finished(complete, download_path)
 
 var mirror = "https://downloads.tuxfamily.org/godotengine/"
 
@@ -15,6 +15,7 @@ var downloading_version: String = ""
 
 var last_download_percent: int = 0
 var downloading: bool = false
+var download_path: String = ""
 
 func _ready() -> void:
 	version_regex.compile("(?<=>)(?:[0-9]\\.){1,2}[0-9](?=<)")
@@ -39,10 +40,16 @@ func get_available_versions() -> void:
 	
 func download_version(version: String) -> void:
 	downloading_version = version
-	download_req.set_download_file("user://download_tmp_godot_%s.zip" % version)
+	download_path = "user://download_tmp_godot_%s.zip" % version
+	download_req.set_download_file(download_path)
 	download_req.request(mirror+"/"+version+"/Godot_v"+version+"-stable_win64.exe.zip")
 	downloading = true
 	last_download_percent = 0
+	
+func cancel_download() -> void:
+	download_req.cancel_request()
+	downloading = false
+	emit_signal("download_finished", false, download_path)
 
 func _on_HTTPRequest_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
 #	print(body.get_string_from_utf8())
@@ -57,8 +64,8 @@ func _on_DownloadReq_request_completed(result: int, response_code: int, headers:
 	if response_code == 200:
 		# Load a zip file
 		"user://download_tmp_godot_%s.zip" % downloading_version
-		emit_signal("download_finished", true)
-	emit_signal("download_finished", false)
+		emit_signal("download_finished", true, download_path)
+	emit_signal("download_finished", false, download_path)
 	downloading = false
 	
 	
