@@ -13,6 +13,8 @@ config_version=4
 config/name="godownloader"
 run/main_scene="res://scenes/main.tscn"
 run/low_processor_mode=true
+boot_splash/image="res://visuals/splashscreen.png"
+boot_splash/bg_color=Color( 0.113725, 0.105882, 0.133333, 1 )
 config/icon="res://icon.png"
 
 [autoload]
