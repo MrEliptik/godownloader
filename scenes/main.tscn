@@ -118,6 +118,7 @@ margin_bottom = 62.0
 size_flags_horizontal = 3
 
 [node name="Setup" parent="." instance=ExtResource( 4 )]
+visible = false
 
 [connection signal="add_version" from="VBoxContainer/TopBar" to="." method="_on_TopBar_add_version"]
 [connection signal="settings" from="VBoxContainer/TopBar" to="." method="_on_TopBar_settings"]

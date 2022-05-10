@@ -44,3 +44,16 @@ static func look_for_godot_in_dir(dir_path: String) -> Array:
 		print("An error occurred when trying to access the path.")
 		
 	return res
+
+static func delete_file(path: String) -> void:
+	var file = File.new()
+	file.open(path, File.READ)
+	# Convert relative path to absolute
+	var abs_path = file.get_path_absolute()
+	# Convert path to "windows" path, necessary for "del"
+	abs_path = abs_path.replacen("/", "\\")
+	file.close()
+	var output = []
+	if OS.execute("del", [abs_path], true, output, true) != OK:
+		print("Deleting %s failed" % abs_path)
+		print(output)

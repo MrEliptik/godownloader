@@ -17,6 +17,7 @@ func _on_TopBar_add_version() -> void:
 	var instance = download_popup_scene.instance()
 	add_child(instance)
 	instance.connect("download", self, "on_download_popup_download")
+	instance.connect("cancel", self, "on_download_popup_cancel")
 	download_popup = instance
 
 func _on_TopBar_settings() -> void:
@@ -25,8 +26,21 @@ func _on_TopBar_settings() -> void:
 func on_download_popup_download(version: String) -> void:
 	net_instance.download_version(version)
 
+func on_download_popup_cancel() -> void:
+	net_instance.cancel_download()
+
 func on_download_progress(progress: int) -> void:
 	download_popup.update_progress(progress)
 	
-func on_download_finished(complete: bool) -> void:
+func on_download_finished(complete: bool, path:String) -> void:
 	download_popup.queue_free()
+	if complete:
+		pass
+		# Unzip to install dir
+		
+		# Remove download
+#		FileManager.delete_file(path)
+	else:
+		# Remove download
+		FileManager.delete_file(path)
+	
