@@ -1,5 +1,6 @@
 extends Node2D
 
+signal versions_updated()
 signal download_progress(progress)
 signal download_finished(complete, download_path)
 
@@ -37,6 +38,7 @@ func _process(delta: float) -> void:
 func get_available_versions() -> void:
 	http_req.request(mirror)
 	yield(http_req, "request_completed")
+	emit_signal("versions_updated")
 	
 func download_version(version: String) -> void:
 	downloading_version = version
@@ -55,7 +57,6 @@ func _on_HTTPRequest_request_completed(result: int, response_code: int, headers:
 #	print(body.get_string_from_utf8())
 	var res = version_regex.search_all(body.get_string_from_utf8())
 	for r in res:
-		print(r.get_string())
 		Globals.available_versions.append({"version":r.get_string(), "type":Globals.TYPE.STABLE})
 
 func _on_DownloadReq_request_completed(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray) -> void:
@@ -63,7 +64,6 @@ func _on_DownloadReq_request_completed(result: int, response_code: int, headers:
 	print(response_code)
 	if response_code == 200:
 		# Load a zip file
-		"user://download_tmp_godot_%s.zip" % downloading_version
 		emit_signal("download_finished", true, download_path)
 	emit_signal("download_finished", false, download_path)
 	downloading = false
