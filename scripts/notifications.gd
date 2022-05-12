@@ -24,7 +24,6 @@ func queue_notification(text: String) -> void:
 		0.3, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	$Tween.start()
 
-
 func _on_Timer_timeout() -> void:
 	var notif = $Container.get_child(0)
 	if not notif: return
