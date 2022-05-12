@@ -21,6 +21,7 @@ config/icon="res://icon.png"
 
 Globals="*res://autoload/globals.gd"
 FileManager="*res://autoload/file_manager.gd"
+UserSettings="*res://autoload/user_settings.gd"
 
 [display]
 
