@@ -1,13 +1,16 @@
 extends Control
 
 export var setup_scene = preload("res://scenes/setup.tscn")
+export var cardview_scene = preload("res://scenes/card_view.tscn")
+export var settings_scene = preload("res://scenes/settings.tscn")
 export var network = preload("res://autoload/network.tscn")
 export var download_popup_scene = preload("res://scenes/download_popup.tscn")
 
 var download_popup = null
 
 onready var net_instance = network.instance()
-onready var popup_cintainer = $PopupContainer
+onready var view_container = $VBoxContainer/View
+onready var popup_container = $PopupContainer
 onready var notifications = $Notifications
 
 func _ready() -> void:
@@ -21,11 +24,10 @@ func _ready() -> void:
 		pass
 	else:
 		var instance = setup_scene.instance()
-		popup_cintainer.add_child(instance)
+		popup_container.add_child(instance)
 		instance.connect("finish", $VBoxContainer/View/CardView, "_on_Setup_finish")
 		
-		
-	notifications.queue_notification("Test blabla bla, long test, bla bla bla")
+#	notifications.queue_notification("Test blabla bla, long test, bla bla bla")
 
 func _on_TopBar_add_version() -> void:
 	var instance = download_popup_scene.instance()
@@ -35,7 +37,12 @@ func _on_TopBar_add_version() -> void:
 	download_popup = instance
 
 func _on_TopBar_settings() -> void:
-	pass # Replace with function body.
+	#TODO: check if current scene is not already settings
+	var curr_scene = view_container.get_child(0)
+	if curr_scene.get_name() == "Settings": return
+	var instance = settings_scene.instance()
+	view_container.add_child(instance)
+	curr_scene.queue_free()
 	
 func on_download_popup_download(version: String) -> void:
 	net_instance.download_version(version)
