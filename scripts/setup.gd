@@ -40,5 +40,8 @@ func _on_Startup_toggled(button_pressed):
 func _on_CheckUpdateAuto_toggled(button_pressed):
 	Globals.check_update_auto = button_pressed
 
+func _on_AutoDeleteInstall_toggled(button_pressed: bool) -> void:
+	Globals.auto_delete_install_file = button_pressed
+
 func _on_DesktopShortcut_toggled(button_pressed):
 	desktop_shortcut = button_pressed

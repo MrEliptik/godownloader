@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/buton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://visuals/fonts/Poppins-Medium.ttf" type="DynamicFontData" id=2]
@@ -43,14 +43,14 @@ bg_color = Color( 0.14902, 0.14902, 0.180392, 1 )
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 
-[sub_resource type="DynamicFont" id=8]
-size = 34
+[sub_resource type="DynamicFont" id=21]
+size = 32
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 28
+[sub_resource type="DynamicFont" id=22]
+size = 24
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
@@ -104,6 +104,18 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=14]
 size = 23
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 23
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 28
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 3 )
@@ -187,7 +199,7 @@ custom_styles/panel = SubResource( 4 )
 [node name="ContentMargin" type="MarginContainer" parent="Control/VBoxContainer"]
 margin_top = 69.0
 margin_right = 1136.0
-margin_bottom = 555.0
+margin_bottom = 557.0
 custom_constants/margin_right = 20
 custom_constants/margin_top = 10
 custom_constants/margin_left = 20
@@ -197,35 +209,35 @@ custom_constants/margin_bottom = 20
 margin_left = 20.0
 margin_top = 10.0
 margin_right = 1116.0
-margin_bottom = 466.0
-custom_constants/separation = 15
+margin_bottom = 468.0
+custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
 margin_right = 1096.0
-margin_bottom = 48.0
+margin_bottom = 46.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 21 )
 text = "Choose Godot installation folder"
 valign = 1
 
 [node name="Label2" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
-margin_top = 63.0
+margin_top = 56.0
 margin_right = 1096.0
-margin_bottom = 103.0
+margin_bottom = 91.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_colors/font_color = Color( 0.8, 0.8, 0.807843, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 22 )
 text = "The folder will be scanned to find already installed Godot executables"
 valign = 1
 autowrap = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
-margin_top = 118.0
+margin_top = 101.0
 margin_right = 1096.0
-margin_bottom = 183.0
+margin_bottom = 166.0
 custom_constants/separation = 30
 
 [node name="DirPath" type="LineEdit" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer"]
@@ -253,9 +265,9 @@ text = "Browse"
 
 [node name="ExecutablesFound" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
 modulate = Color( 0.345098, 0.839216, 0.74902, 1 )
-margin_top = 198.0
+margin_top = 176.0
 margin_right = 1096.0
-margin_bottom = 229.0
+margin_bottom = 207.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_colors/font_color = Color( 0.8, 0.8, 0.807843, 1 )
@@ -265,9 +277,9 @@ valign = 1
 autowrap = true
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
-margin_top = 244.0
+margin_top = 217.0
 margin_right = 1096.0
-margin_bottom = 278.0
+margin_bottom = 251.0
 custom_constants/separation = 30
 
 [node name="Startup" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer2"]
@@ -288,9 +300,9 @@ text = "Launch at startup"
 valign = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
-margin_top = 293.0
+margin_top = 261.0
 margin_right = 1096.0
-margin_bottom = 327.0
+margin_bottom = 295.0
 custom_constants/separation = 30
 
 [node name="CheckUpdateAuto" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer3"]
@@ -310,9 +322,9 @@ text = "Automatically check for updates"
 valign = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
-margin_top = 342.0
+margin_top = 305.0
 margin_right = 1096.0
-margin_bottom = 376.0
+margin_bottom = 339.0
 custom_constants/separation = 30
 
 [node name="DesktopShortcut" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer4"]
@@ -331,10 +343,34 @@ custom_fonts/font = SubResource( 14 )
 text = "Add shortcut to desktop"
 valign = 1
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
-margin_top = 391.0
+[node name="HBoxContainer6" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+margin_top = 349.0
 margin_right = 1096.0
-margin_bottom = 456.0
+margin_bottom = 383.0
+custom_constants/separation = 30
+alignment = 1
+
+[node name="AutoDeleteInstall" type="CheckBox" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6"]
+margin_right = 24.0
+margin_bottom = 34.0
+theme = ExtResource( 4 )
+pressed = true
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6"]
+margin_left = 54.0
+margin_right = 1096.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 23 )
+text = "Auto delete install file after installation"
+valign = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Control/VBoxContainer/ContentMargin/VBoxContainer"]
+margin_top = 393.0
+margin_right = 1096.0
+margin_bottom = 458.0
 size_flags_vertical = 3
 custom_constants/separation = 30
 
@@ -369,6 +405,7 @@ theme = ExtResource( 4 )
 window_title = "Open a Directory"
 mode = 2
 access = 2
+show_hidden_files = true
 current_dir = "/Users/Victor/Documents/dev/GAMEDEV/godownloader"
 current_path = "/Users/Victor/Documents/dev/GAMEDEV/godownloader/"
 
@@ -376,5 +413,6 @@ current_path = "/Users/Victor/Documents/dev/GAMEDEV/godownloader/"
 [connection signal="toggled" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer2/Startup" to="." method="_on_Startup_toggled"]
 [connection signal="toggled" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer3/CheckUpdateAuto" to="." method="_on_CheckUpdateAuto_toggled"]
 [connection signal="toggled" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer4/DesktopShortcut" to="." method="_on_DesktopShortcut_toggled"]
+[connection signal="toggled" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer6/AutoDeleteInstall" to="." method="_on_AutoDeleteInstall_toggled"]
 [connection signal="pressed" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer5/FinishBtn" to="." method="_on_FinishBtn_pressed"]
 [connection signal="dir_selected" from="Control/FileDialog" to="." method="_on_FileDialog_dir_selected"]
