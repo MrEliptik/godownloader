@@ -33,6 +33,21 @@ static func look_for_godot_in_dir(dir_path: String) -> Array:
 						if type_res:
 							print(type_res.get_string())
 							type = type_res.get_string()
+						
+						match type:
+							"stable":
+								type = Globals.TYPE.STABLE
+							"rc":
+								type = Globals.TYPE.RC
+							"beta":
+								type = Globals.TYPE.BETA
+							"alpha":
+								type = Globals.TYPE.ALPHA
+							"dev":
+								type = Globals.TYPE.PRE_ALPHA
+							_:
+								type = Globals.TYPE.PRE_ALPHA
+								
 						var version = {
 							"path":dir_path.plus_file(file_name),
 							"version": version_res.get_string(),
