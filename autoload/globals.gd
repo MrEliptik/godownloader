@@ -2,6 +2,14 @@ extends Node
 
 enum TYPE {STABLE, RC, BETA, ALPHA, PRE_ALPHA}
 
+var TYPE_TO_STRING = {
+	TYPE.STABLE: "stable",
+	TYPE.RC: "rc",
+	TYPE.BETA: "beta",
+	TYPE.ALPHA: "alpha",
+	TYPE.PRE_ALPHA: "dev"
+}
+
 var version = {
 	"path": "",
 	"version": "",
@@ -9,7 +17,7 @@ var version = {
 }
 
 var install_path: String = ""
-var setup_complete: bool = true
+var setup_complete: bool = false
 
 var launch_startup: bool = true
 var check_update_auto: bool = true
