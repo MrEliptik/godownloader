@@ -37,11 +37,11 @@ func _on_TopBar_add_version() -> void:
 	download_popup = instance
 
 func _on_TopBar_settings() -> void:
-	#TODO: check if current scene is not already settings
 	var curr_scene = view_container.get_child(0)
 	if curr_scene.get_name() == "Settings": return
 	var instance = settings_scene.instance()
 	view_container.add_child(instance)
+	instance.connect("finish", self, "on_settings_finish")
 	curr_scene.queue_free()
 	
 func on_download_popup_download(version: String) -> void:
@@ -67,4 +67,9 @@ func on_download_finished(complete: bool, path:String) -> void:
 		notifications.queue_notification("Download stopped. Deleting file..")
 		# Remove download
 		FileManager.delete_file(path)
-	
+
+func on_settings_finish() -> void:
+	var curr_scene = view_container.get_child(0)
+	var instance = cardview_scene.instance()
+	view_container.add_child(instance)
+	curr_scene.queue_free()
