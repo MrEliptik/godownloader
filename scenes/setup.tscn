@@ -406,8 +406,6 @@ window_title = "Open a Directory"
 mode = 2
 access = 2
 show_hidden_files = true
-current_dir = "/Users/Victor/Documents/dev/GAMEDEV/godownloader"
-current_path = "/Users/Victor/Documents/dev/GAMEDEV/godownloader/"
 
 [connection signal="pressed" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer/BrowseBtn" to="." method="_on_BrowseBtn_pressed"]
 [connection signal="toggled" from="Control/VBoxContainer/ContentMargin/VBoxContainer/HBoxContainer2/Startup" to="." method="_on_Startup_toggled"]
